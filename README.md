@@ -18,6 +18,16 @@ The user can manually call cmake as well.
 
 The output library `volePSI` and executable `frontend` will be written to `out/build/<platform>/`. The `frontend` can perform PSI based on files as input sets and communicate via sockets. See the output of `frontend` for details. There is also two example on how to perform [networking](https://github.com/Visa-Research/volepsi/blob/main/frontend/networkSocketExample.h#L7) or [manually](https://github.com/Visa-Research/volepsi/blob/main/frontend/messagePassingExample.h#L93) get & send the protocol messages.
 
+#### OKVS reproduction
+This repository now vendors the standalone `volepsi2` module (a reproduction of the OKVS described in *Blazing Fast PSI from Improved OKVS and Subfield VOLE*). CMake automatically builds `volepsi2` as part of the normal `volePSI` build and exposes it through the new `OkvsAdapter`. The adapter backs the VOLE-based OPRF/PSI flow so no extra steps are required.
+
+If you want to experiment with the OKVS in isolation you can build and run the sample CLI:
+```
+cmake --build volepsi/build --target volepsi2_cli
+./volepsi/build/volepsi2/volepsi2_cli
+```
+The CLI simply encodes random key/value pairs and checks that decoding succeeds, which is a quick sanity test while hacking on Section 2 of the paper.
+
 ##### Compile Options
 Options can be set as `-D NAME=VALUE`. For example, `-D VOLE_PSI_NO_SYSTEM_PATH=true`. See the output of the build for default/current value. Options include :
  * `VOLE_PSI_NO_SYSTEM_PATH`, values: `true,false`.  When looking for dependencies, do not look in the system install. Instead use `CMAKE_PREFIX_PATH` and the internal dependency management.  

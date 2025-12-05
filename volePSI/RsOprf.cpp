@@ -270,7 +270,7 @@ namespace volePSI
 		auto wr = block{};
 		auto ws = block{};
 		auto Hws = std::array<u8, 32> {};
-		auto paxos = Baxos{};
+		auto paxos = OkvsAdapter{};
 		auto hPtr = std::unique_ptr<block[]>{};
 		auto h = span<block>{};
 		auto p = UninitVec{};

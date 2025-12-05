@@ -13,6 +13,9 @@ include(cmake/buildOptions.cmake)
 # find all the dependancies.
 include(cmake/findDependancies.cmake)
 
+# build okvs lib
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../volepsi2 ${CMAKE_BINARY_DIR}/volepsi2)
+
 # build volePSI
 add_subdirectory(volePSI)
 

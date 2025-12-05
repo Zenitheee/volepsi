@@ -50,9 +50,19 @@ install(
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
     EXPORT volePSITargets)
 
+install(
+    TARGETS volepsi2
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    EXPORT volePSITargets)
+
 # install headers
 install(
     DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../volePSI"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/"
+    FILES_MATCHING PATTERN "*.h")
+
+install(
+    DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../volepsi2/include"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/"
     FILES_MATCHING PATTERN "*.h")
 
