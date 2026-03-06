@@ -9,6 +9,7 @@
 
 #include "volePSI/Defines.h"
 #include "volePSI/Paxos.h"
+#include "volePSI/OkvsAdapter.h"
 #include "libOTe/Vole/Silent/SilentVoleSender.h"
 #include "libOTe/Vole/Silent/SilentVoleReceiver.h"
 
@@ -21,7 +22,7 @@ namespace volePSI
         oc::SilentVoleSender<block,block, oc::CoeffCtxGF128> mVoleSender;
         span<block> mB;
         block mD;
-        Baxos mPaxos;
+        OkvsAdapter mPaxos;
         bool mMalicious = false;
         block mW;
         u64 mBinSize = 1 << 14;
